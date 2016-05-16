@@ -1,0 +1,35 @@
+*** Settings ***
+Library           AppiumLibrary
+Resource          my_resource.txt
+
+*** Test Cases ***
+lanuch_app
+    start
+
+register
+    Click Button    Register
+    Input Text    id=com.artisan.demo.android:id/edit_dialog_input1    roBMdnpl
+    Click Button    Ok
+
+add_customlogs
+    Click Element    id=com.artisan.demo.android:id/add_custom_log
+    Input Text    id=com.artisan.demo.android:id/edit_dialog_input1    this is my cutom log-01
+    Click Element    id=com.artisan.demo.android:id/edit_dialog_ok
+
+add_custom_key
+    Click Element    id=com.artisan.demo.android:id/add_custom_key
+    Input Text    id=com.artisan.demo.android:id/edit_dialog_input1    key1
+    Input Text    id=com.artisan.demo.android:id/edit_dialog_input2    value1
+    Click Element    id=com.artisan.demo.android:id/edit_dialog_ok
+
+crash_bounds
+    Click Element    id=com.artisan.demo.android:id/crash_obs_btn
+    Click Button    确定
+    Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    appPackage=com.artisan.demo.android    appActivity=.MainActivity    platformVersion=4.4.2    deviceName=4037T
+
+crash_native
+    Click Element    id=com.artisan.demo.android:id/nativecrash_button
+    Open Application    http://127.0.0.1:4723/wd/hub    platformName=Android    appPackage=com.artisan.demo.android    appActivity=.MainActivity    platformVersion=4.4.2    deviceName=4037T
+
+test_demo
+    send_crash    C:\\Python27\\Lib\\site-packages\\My_PostRqruestLibrary\\android_crash.json

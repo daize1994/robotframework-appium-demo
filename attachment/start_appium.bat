@@ -1,0 +1,1 @@
+appium -a 127.0.0.1 --session-override --app E:\Crash-Analysis\test_crash_app\crash_app20160112\test_crash_app20160112-5_release.apk

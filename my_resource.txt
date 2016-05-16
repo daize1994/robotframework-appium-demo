@@ -1,0 +1,6 @@
+*** Variables ***
+${host}           http://127.0.0.1:4723
+
+*** Keywords ***
+start
+    Open Application    ${host}/wd/hub    platformName=Android    appPackage=com.artisan.demo.android    appActivity=.MainActivity    platformVersion=5.1.1    deviceName=4037T
